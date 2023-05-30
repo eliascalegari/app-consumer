@@ -1,0 +1,39 @@
+input UrlOrder {
+  field: UrlOrderField!
+  direction: OrderDirection!
+}
+
+enum UrlOrderField {
+  quantity
+  hash
+  created_at
+  updated_at
+}
+
+enum OrderDirection {
+  ASC
+  DESC
+}
+
+
+type Query {
+  urls: [Url] @all
+  url(hash: String!): Url @first
+  urls(orderBy: UrlOrder): [Url] @all
+}
+
+type Url {
+  hash: String!
+  quantity: Int!
+  created_at: String!
+  updated_at: String!
+}
+
+
+
+
+
+
+
+
+
